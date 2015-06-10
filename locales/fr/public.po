@@ -12,3 +12,9 @@ msgstr ""
 
 msgid "Category"
 msgstr "Catégorie"
+
+msgid "Freshy theme"
+msgstr "Thème Freshy de"
+
+msgid "adapted from Wordpress"
+msgstr "adapté depuis Wordpress"

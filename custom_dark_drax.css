@@ -4,7 +4,7 @@
 # Original WP Theme from Julien de Luca
 # (http://www.jide.fr/francais/)
 #
-# Copyright (c) 2008-2013
+# Copyright (c) 2008-2015
 # Bruno Hondelatte dsls@morefnu.org
 # Pierre Van Glabeke contact@brol.info
 # 
@@ -73,16 +73,16 @@ ul#quicklinks li a.rss {
 	border-top:2px solid #383838;
 }
 
-#title, #frame, #footer_content {
+#title, #main, #footer_content {
 	background:#0c0c0c url(images/page-gradient-dark.png) repeat-y right;
 }
 
-.sidebar_left #frame {
+.sidebar_left #main {
 	/*:Sidebar left width*/
 	padding-left:240px;
 }
 
-.sidebar_right #frame {
+.sidebar_right #main {
 	/*:Sidebar right width*/
 	padding-right:280px;
 }
@@ -146,7 +146,7 @@ a {
   background-color:#00b0e6;
 }
 
-.sidebar li.current_page_item a, .sidebar li.current-cat a, #frame .sidebar li a:hover {
+.sidebar li.current_page_item a, .sidebar li.current-cat a, #main .sidebar li a:hover, #blogcustom.sidebar li a:hover {
 	/*:Navigation color*/
 	background-color:#00b0e6;
 }
@@ -289,11 +289,11 @@ h2, h2 a, h3, h3 a, .post blockquote, .post blockquote a, .author, .author a {
 
 /* plugin dayMode */
 
-#calendar a:hover, #calendar caption a:hover {
+.calendar a:hover, .calendar caption a:hover {
   background-color:#00b0e6;
 }
 
-#calendar a {
+.calendar a {
   color:#00b0e6;
 }
 

@@ -4,7 +4,7 @@
 # Original WP Theme from Julien de Luca
 # (http://www.jide.fr/francais/)
 #
-# Copyright (c) 2008-2013
+# Copyright (c) 2008-2015
 # Bruno Hondelatte dsls@morefnu.org
 # Pierre Van Glabeke contact@brol.info
 #
@@ -61,13 +61,14 @@ a {
 	color:#ff6600;
 }
 
-#content a, #footer_content a {
+#content a, #footer_content p a {
 	text-decoration:none !important;
 }
 
-#content a:hover, #footer_content a:hover {
+#content a:hover, #footer_content p a:hover {
 	text-decoration:underline !important;
 }
+#footer_content p {}
 #content p img { max-width:100%;}
 a img {
 	border:0px none;
@@ -88,9 +89,12 @@ a img {
 	background-position:center;
 }
 
-#title, #frame, #footer_content {
+#title, #main, #footer_content {
 	background:#fff url(images/page-gradient.png) repeat-y right;
 }
+
+#prelude {position:absolute;margin:0;padding:0 0 0 4px;top:0;width:1px;left:3px;color:transparent;}
+#prelude a {position:absolute;overflow:hidden;top:-500px;width:1px;left:0;height:1px}
 
 #footer_content {
 	border-top:1px solid #d0d0d0;
@@ -111,7 +115,7 @@ h1 a {
 	color:#3d3d3d;
 	text-decoration:none;
 }
-
+.description {}
 .description small {
 	font-family:Trebuchet Ms, Lucida, Arial, Verdana, serif, sans;
 	font-weight:bold;
@@ -444,6 +448,10 @@ small {
 	border-left:0px none;
 }
 
+#blogcustom.sidebar  h2 {
+	border:none;
+}
+
 .sidebar h2 a {
 	color:#ff6600;
 }
@@ -540,12 +548,12 @@ small {
 	color:#3d3d3d;
 }
 
-.sidebar li.current_page_item a, .sidebar li.current-cat a, #frame .sidebar li a:hover {
+.sidebar li.current_page_item a, .sidebar li.current-cat a, #main .sidebar li a:hover, #blogcustom.sidebar li a:hover {
 	background:#ff6600;
 	color:#fff;
 }
 
-#sidebar_left h3, #sidebar.sidebar h3 {
+#sidebar_left h3, #sidebar h3, .sidebar h3 {
 	font-size:1.3em;
 	font-weight:bold;
 }
@@ -642,6 +650,22 @@ p.navigation {
 	*margin:0;
 	*padding:.5em 0 2em 0;
 }
+#blogcustom {padding:10px;}
+#footer #blogcustom div {
+  width:18.5%;
+  float:left;
+  text-align:left;
+  padding:0 10px 0 0;
+}
+#footer #blogcustom h2 {
+  padding-top:0;
+}
+#footer #blogcustom ul {
+  list-style:none;
+}
+#footer #blogcustom img {
+  max-width:90%;
+}
 
 .dc-archive-month .navigation, .dc-archive-day .navigation {text-align:center;}
 
@@ -705,7 +729,7 @@ p.navigation {
 
 .syndicate li {
 	background: transparent url(images/icons/feed-icon-12x12.gif) no-repeat 0% 50%;
-	padding-left: 14px;
+	padding-left: 14px !important;
 }
 
 .day-date {
@@ -765,24 +789,24 @@ p.navigation {
 
 /* plugin dayMode */
 
-#calendar td {text-align:center;}
+.calendar td {text-align:center;}
 
-#calendar a:hover {
+.calendar a:hover {
   padding:3px;
   font-weight:bold;
 }
 
-#calendar caption a:hover {
+.calendar caption a:hover {
   padding:3px 0;
 }
 
-#calendar a:hover, #calendar caption a:hover {
+.calendar a:hover, .calendar caption a:hover {
   color:#fff;
   background-color:#f60;
   text-decoration:none;
 }
 
-#calendar a {
+.calendar a {
   color:#f60;
   font-weight:bold;
 }

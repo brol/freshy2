@@ -26,7 +26,7 @@ $config = new freshy2Config($core);
 $sidebar_combo = array(__('None') => 'none',__('Navigation sidebar') =>'nav', __('Extra sidebar')=>'extra');
 $menu_combo = array(
 	__('simpleMenu') => 'simplemenu',
-	__('menuFreshy or menu (Adjaya)') => 'freshymenu'
+	__('menuFreshy or Menu') => 'freshymenu'
 );
 $images = $config->getHeaderImages();
 if (!empty($_POST))

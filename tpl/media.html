@@ -1,20 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{tpl:BlogLanguage}}"
-	lang="{{tpl:BlogLanguage}}">
+<!DOCTYPE html>
+<html lang="{{tpl:BlogLanguage}}">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="UTF-8" />
+  <meta name="ROBOTS" content="{{tpl:BlogMetaRobots robots="NOINDEX,NOFOLLOW"}}" />
 
-  <meta name="robots" content="noindex, nofollow" />
   <title>{{tpl:lang Download manager}} - {{tpl:DLMCurrentDir}} - {{tpl:BlogName encode_html="1"}}</title>
+  <meta name="copyright" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
+  <meta name="author" content="{{tpl:BlogEditor encode_html="1"}}" />
 
-  <link rel="top" href="{{tpl:BlogURL}}" title="{{tpl:lang Home}}" />
-  <link rel="contents" href="{{tpl:BlogArchiveURL}}" title="{{tpl:lang Archives}}" />
+  <meta name="dc.title" lang="{{tpl:BlogLanguage}}" content="{{tpl:lang Download manager}} - {{tpl:DLMCurrentDir}} - {{tpl:BlogName encode_html="1"}}" />
+  <meta name="dc.language" content="{{tpl:BlogLanguage}}" />
+  <meta name="dc.publisher" content="{{tpl:BlogEditor encode_html="1"}}" />
+  <meta name="dc.rights" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
+  <meta name="dc.type" content="text" />
+  <meta name="dc.format" content="text/html" />
 
-  <link rel="alternate" type="application/atom+xml" title="Atom 1.0"
-  	href="{{tpl:BlogFeedURL type="atom"}}" />
-  <link rel="meta" type="application/xbel+xml" title="Blogroll"
-  	href="{{tpl:BlogrollXbelLink}}" />
+  <link rel="contents" title="{{tpl:lang Archives}}" href="{{tpl:BlogArchiveURL}}" />
+
+  <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="{{tpl:BlogFeedURL type="atom"}}" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="{{tpl:BlogRSDURL}}" />
+  <link rel="meta" type="application/xbel+xml" title="Blogroll" href="{{tpl:BlogrollXbelLink}}" />
 
   <style type="text/css">
 		.center {text-align:center;}
@@ -23,7 +28,7 @@
 		dt {font-weight:bold;}
   </style>
 
-  <link rel="stylesheet" href="{{tpl:BlogQmarkURL}}pf=dlManager/default-templates/facebox.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="{{tpl:BlogQmarkURL}}pf=dlManager/css/dlmanager_facebox.css" type="text/css" media="screen" />
 
   {{tpl:include src="_head.html"}}
 
@@ -34,7 +39,7 @@
 	  $(document).ready(function () {
 	  	$.facebox.settings.opacity = 0.3;
 	  	$.facebox.settings.loadingImage = '{{tpl:BlogQmarkURL}}pf=dlManager/images/facebox/loading.gif';
-	  	$.facebox.settings.closeImage = '{{tpl:BlogQmarkURL}}pf=dlManager/images/facebox/closelabel.gif';
+	  	$.facebox.settings.closeImage = '{{tpl:BlogQmarkURL}}pf=dlManager/images/facebox/close.png';
 			$('a.preview').click(function () {
 				$.get($(this).attr('href'), function(data) {
 					data = $(data).find('#file');
@@ -62,7 +67,7 @@
 
     <div id="page" class="{{tpl:Freshy2LayoutClass}}">
       <div class="container">
-	<div id="frame">
+	<div id="main" role="main">
 	  <div id="content">
 
 <div class="content-inner">
@@ -220,7 +225,7 @@
 	  </div> <!-- End #content -->
 
 	  {{tpl:include src="_sidebar.html"}}
-	</div> <!-- End #frame -->
+	</div> <!-- End #main -->
       </div> <!-- End #container -->
     </div> <!-- End #page -->
 

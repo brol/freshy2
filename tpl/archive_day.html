@@ -1,39 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{tpl:BlogLanguage}}" lang="{{tpl:BlogLanguage}}">
+<!DOCTYPE html>
+<html lang="{{tpl:BlogLanguage}}">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="ROBOTS" content="{{tpl:BlogMetaRobots robots="NOINDEX"}}" />
+  <meta charset="UTF-8" />
+  <meta name="ROBOTS" content="{{tpl:BlogMetaRobots robots="NOINDEX"}}" />
 
-	<title>{{tpl:lang Archives}} - {{tpl:ArchiveDate}} - {{tpl:BlogName encode_html="1"}}</title>
-	<meta name="copyright" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
-	<meta name="author" content="{{tpl:BlogEditor encode_html="1"}}" />
-	<meta name="date" scheme="W3CDTF" content="{{tpl:BlogUpdateDate iso8601="1"}}" />
+  <title>{{tpl:lang Archives}} - {{tpl:ArchiveDate}} - {{tpl:BlogName encode_html="1"}}</title>
+  <meta name="copyright" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
+  <meta name="author" content="{{tpl:BlogEditor encode_html="1"}}" />
+  <meta name="date" content="{{tpl:BlogUpdateDate iso8601="1"}}" />
 
-	<link rel="schema.dc" href="http://purl.org/dc/elements/1.1/" />
-	<meta name="dc.title" lang="{{tpl:BlogLanguage}}" content="{{tpl:lang Archives}} - {{tpl:ArchiveDate}} - {{tpl:BlogName encode_html="1"}}" />
-	<meta name="dc.language" content="{{tpl:BlogLanguage}}" />
-	<meta name="dc.publisher" content="{{tpl:BlogEditor encode_html="1"}}" />
-	<meta name="dc.rights" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
-	<meta name="dc.date" scheme="W3CDTF" content="{{tpl:BlogUpdateDate iso8601="1"}}" />
-	<meta name="dc.type" content="text" />
-	<meta name="dc.format" content="text/html" />
+  <meta property="dc.title" lang="{{tpl:BlogLanguage}}" content="{{tpl:lang Archives}} - {{tpl:ArchiveDate}} - {{tpl:BlogName encode_html="1"}}" />
+  <meta property="dc.language" content="{{tpl:BlogLanguage}}" />
+  <meta property="dc.publisher" content="{{tpl:BlogEditor encode_html="1"}}" />
+  <meta property="dc.rights" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
+  <meta property="dc.date" content="{{tpl:BlogUpdateDate iso8601="1"}}" />
+  <meta property="dc.type" content="text" />
+  <meta property="dc.format" content="text/html" />
 
-	<link rel="top" href="{{tpl:BlogURL}}" title="{{tpl:lang Home}}" />
-	<link rel="up" href="{{tpl:BlogArchiveURL}}" title="{{tpl:lang Archives}}" />
-	<link rel="contents" href="{{tpl:BlogArchiveURL}}" title="{{tpl:lang Archives}}" />
+  <link rel="up" href="{{tpl:BlogArchiveURL}}" title="{{tpl:lang Archives}}" />
+  <link rel="contents" href="{{tpl:BlogArchiveURL}}" title="{{tpl:lang Archives}}" />
 
-<tpl:ArchiveNext>
-	<link rel="next" href="{{tpl:ArchiveURL}}" title="{{tpl:ArchiveDate encode_html="1"}}" />
-</tpl:ArchiveNext>
-<tpl:ArchivePrevious>
-	<link rel="prev" href="{{tpl:ArchiveURL}}" title="{{tpl:ArchiveDate encode_html="1"}}" />
-</tpl:ArchivePrevious>
-<tpl:Entries no_content="1">
-	<link rel="chapter" href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}" />
-</tpl:Entries>
+  <tpl:ArchiveNext><link rel="next" href="{{tpl:ArchiveURL}}"
+  title="{{tpl:ArchiveDate encode_html="1"}}" /></tpl:ArchiveNext>
+  <tpl:ArchivePrevious><link rel="prev" href="{{tpl:ArchiveURL}}"
+  title="{{tpl:ArchiveDate encode_html="1"}}" /></tpl:ArchivePrevious>
 
-{{tpl:include src="_head.html"}}
+  <tpl:Entries no_content="1">
+  <link rel="chapter" href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}" />
+  </tpl:Entries>
+
+  {{tpl:include src="_head.html"}}
 </head>
 
 <body class="dc-archive-day">
@@ -42,7 +38,7 @@
 
     <div id="page" class="{{tpl:Freshy2LayoutClass}}">
       <div class="container">
-	<div id="frame">
+	<div id="main" role="main">
 	  <div id="content">
 
   <p class="navigation">
@@ -57,7 +53,7 @@
   <div class="post">
   <tpl:Entries>
 
-    <h2 id="p{{tpl:EntryID}}" class="post-title"><a
+    <h2 id="p{{tpl:EntryID}}" class="post-title" lang="{{tpl:EntryLang}}"><a
     href="{{tpl:EntryURL}}" title="{{tpl:lang Read}} {{tpl:EntryTitle encode_html="1"}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
 
     <div class="post-content">{{tpl:EntryContent}}</div>
@@ -102,7 +98,7 @@
 	  </div> <!-- End #content -->
 
 	  {{tpl:include src="_sidebar.html"}}
-	</div> <!-- End #frame -->
+	</div> <!-- End #main -->
       </div> <!-- End #container -->
     </div> <!-- End #page -->
 

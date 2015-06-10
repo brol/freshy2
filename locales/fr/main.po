@@ -10,6 +10,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
 
+msgid "Freshy v2 customizable theme"
+msgstr "Freshy v2 thème configurable"
+
 #: _config.php:29
 msgid "No sidebar"
 msgstr "Pas de barre latérale"
@@ -42,14 +45,8 @@ msgstr "Image d'entête"
 msgid "Use custom theme default header"
 msgstr "Utiliser l'image par défaut du thème"
 
-msgid "menuFreshy or menu (Adjaya)"
-msgstr "menuFreshy ou menu (Adjaya)"
+msgid "menuFreshy or Menu"
+msgstr "menuFreshy ou Menu"
 
 msgid "Menu: "
 msgstr "Menu : "
-
-msgid ""
-msgstr ""
-
-msgid ""
-msgstr ""

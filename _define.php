@@ -4,7 +4,7 @@
 # Original WP Theme from Julien de Luca
 # (http://www.jide.fr/francais/)
 #
-# Copyright (c) 2008-2013
+# Copyright (c) 2008-2015
 # Bruno Hondelatte dsls@morefnu.org
 # Pierre Van Glabeke contact@brol.info
 # 
@@ -14,11 +14,14 @@
 # -- END LICENSE BLOCK ------------------------------------
 if (!defined('DC_RC_PATH')) { return; }
 
+/* date 10-06-2015 */
 $this->registerModule(
 	/* Name */			"Freshy v2",
 	/* Description*/		"Freshy v2 customizable theme",
 	/* Author */			"Bruno Hondelatte, Pierre Van Glabeke, Julien de Luca (original WP theme)",
-	/* Version */			'1.8'
-	/* date 19-10-2013 */
+	/* Version */			'1.9',
+	array(
+		'type'	 =>	'theme',
+		'tplset' => 'mustek'
+	)
 );
-?>

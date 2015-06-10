@@ -1,15 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{tpl:BlogLanguage}}" lang="{{tpl:BlogLanguage}}">
+<!DOCTYPE html>
+<html lang="{{tpl:BlogLanguage}}">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="UTF-8" />
   <meta name="ROBOTS" content="{{tpl:BlogMetaRobots robots="NOINDEX,NOARCHIVE"}}" />
   
   <title>{{tpl:lang Send to friend}} - {{tpl:BlogName encode_html="1"}}</title>
-  
-  <link rel="top" href="{{tpl:BlogURL}}" title="{{tpl:lang Home}}" />
-  <link rel="contents" title="{{tpl:lang Archives}}" href="{{tpl:BlogArchiveURL}}" />
-  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{{tpl:BlogFeedURL type="rss2"}}" />
+
+  <link rel="contents" href="{{tpl:BlogArchiveURL}}" title="{{tpl:lang Archives}}" />
+  <link rel="meta" type="application/xbel+xml" title="Blogroll" href="{{tpl:BlogrollXbelLink}}" />
   <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="{{tpl:BlogFeedURL type="atom"}}" />
   
   {{tpl:include src="_head.html"}}
@@ -21,7 +19,7 @@
 
     <div id="page" class="{{tpl:Freshy2LayoutClass}}">
       <div class="container">
-	<div id="frame">
+	<div id="main" role="main">
 	  <div id="content">
   
   <div id="content-info">
@@ -30,7 +28,7 @@
   
   <div class="content-inner">
     <p style="text-align:center">{{tpl:lang Entry to share:}} <a href="{{tpl:EnvoyerPostUrl}}">{{tpl:EnvoyerPostTitle}}</a></p>
-	<form action="{{tpl:BlogURL}}envoyer/{{tpl:EnvoyerPostId}}" method="post" id="comment-form">	
+	<form action="{{tpl:BlogURL}}envoyer/{{tpl:EnvoyerPostId}}" method="post" id="comment-form" role="form">
 	<fieldset>
 	{{tpl:EnvoyerMessage}}
 	<p class="field">
@@ -60,7 +58,7 @@
   </div><!-- End #content --> 
 
 	  {{tpl:include src="_sidebar.html"}}
-	</div> <!-- End #frame -->
+	</div> <!-- End #main -->
       </div> <!-- End #container -->
     </div> <!-- End #page -->
 
