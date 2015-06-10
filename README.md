@@ -12,8 +12,8 @@ Freshy2 est prévu pour fonctionner avec le plugin simpleMenu ou Menu.
 
 Concernant le fichier post.html :
 
-    la pagination se fait dans la catégorie, mais vous pouvez commenter le code inclus dans le fichier tpl/post.html pour que celle-ci prenne en compte le blog dans son ensemble,
-    le service addthis a été inclus pour faciliter le partage.
+* la pagination se fait dans la catégorie, mais vous pouvez commenter le code inclus dans le fichier tpl/post.html pour que celle-ci prenne en compte le blog dans son ensemble,
+* le service addthis a été inclus pour faciliter le partage.
 
 Le support de Internet Explorer 6 et 7 est abandonné. L'alerte mise en place auparavant est supprimée.
 
