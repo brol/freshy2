@@ -1,0 +1,166 @@
+/*  
+# -- BEGIN LICENSE BLOCK ----------------------------------
+# This file is part of Freshy2, a theme for Dotclear.
+# Original WP Theme from Julien de Luca
+# (http://www.jide.fr/francais/)
+#
+# Copyright (c) 2008-2013
+# Bruno Hondelatte dsls@morefnu.org
+# Pierre Van Glabeke contact@brol.info
+# 
+# Licensed under the GPL version 2.0 license.
+# A copy of this license is available in LICENSE file or at
+# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+# -- END LICENSE BLOCK ------------------------------------
+*/
+#frame .sidebar li a:hover {
+	/*:Navigation color*/
+	background-color:#ee9d00;
+}
+
+code {
+	/*:Content color*/
+	background-color:#e66b00;
+	/*:Content color*/
+	border-color:#e66b00;
+}
+
+#header_image {
+	/*:Header image*/
+	background-image:url(images/headers/vitamin.jpg);
+	/*:Header image alignment*/
+	background-position:center;
+	/*:Header height*/
+	padding-top:200px;
+}
+
+body {
+	/*:Background image*/
+	background-image:url(images/background/fat_lines.gif);
+	/*:Background color*/
+	background-color:#ffffff;
+}
+
+.sidebar_left #frame {
+	/*:Sidebar left width*/
+	padding-left:200px;
+}
+
+.sidebar_right #frame {
+	/*:Sidebar right width*/
+	padding-right:250px;
+}
+
+#sidebar_left.sidebar {
+	/*:Sidebar left width*/
+	width:200px;
+	/*:Sidebar left width*/
+	right:200px;
+}
+
+#sidebar.sidebar {
+	/*:Sidebar right width*/
+	width:250px;
+}
+
+* html #sidebar_left {
+	/*:Sidebar right width*/
+	left:250px;
+}
+
+#page, #header, #footer {
+	/*:Page width*/
+	width:800px;
+}
+
+*::-moz-selection, *::-selection {
+	/*:Navigation color*/
+	background-color:#ee9d00;
+}
+
+a {
+	/*:Navigation color*/
+	color:#ee9d00;
+}
+
+.sidebar h2 {
+	/*:Navigation color*/
+	border-left-color:#ee9d00;
+	/*:Navigation color*/
+	color:#ee9d00;
+}
+
+.sidebar h2 a {
+	/*:Navigation color*/
+	color:#ee9d00;
+}
+
+#menu ul li li a:hover, #menu ul li li.current_page_item a:hover, #menu ul li li.current_page_item a {
+	/*:Navigation color*/
+	color:#ee9d00;
+}
+
+#menu ul li.current_page_parent:hover a, #menu ul li.current_page_parent a:hover, #menu ul li.current_page_parent a, #menu ul li.current_page_item:hover a, #menu ul li.current_page_item a:hover, #menu ul li.current_page_item a,
+#supranav li.active {
+	/*:Navigation color*/
+	background-color:#ee9d00;
+}
+
+#menu ul li.top_parent:hover a, #menu ul li.top_parent a {
+  background-color:#ee9d00;
+}
+
+.sidebar li.current_page_item a, .sidebar li.current-cat a {
+	/*:Navigation color*/
+	background-color:#ee9d00;
+}
+
+.sidebar .categories li.category-current a {
+	color: white;
+	background-color:#ee9d00;
+}
+.sidebar .categories li.category-current li a {
+	color: black;
+	background:none;
+}
+
+h2, h2 a, h3, h3 a, .post blockquote, .post blockquote a, .author, .author a {
+	/*:Content color*/
+	color:#e66b00;
+}
+
+.post blockquote {
+	/*:Content color*/
+	border-left-color:#e66b00;
+}
+
+.meta .author, .meta .author a, .meta .flux a, .cat .flux a {
+	color:#e66b00;
+}
+
+.comment .author, .comment .author a {
+	color:#e66b00;
+}
+
+.comment_author { 
+	background:#e66b00 url(images/transparency/white-90.png) repeat scroll 0 0;
+	border:1px solid #e66b00;
+}
+
+.comment_author h4 { 
+	color:#e66b00;
+}
+
+.ping .author, .ping .author a {
+	color:#e66b00;
+}
+
+/* plugin dayMode */
+
+#calendar a:hover, #calendar caption a:hover {
+  background-color:#ee9d00;
+}
+
+#calendar a {
+  color:#ee9d00;
+}

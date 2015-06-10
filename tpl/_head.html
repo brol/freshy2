@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="{{tpl:BlogThemeURL}}/{{tpl:Freshy2StyleSheet}}" media="screen" />
+
+<link rel="stylesheet" type="text/css" href="{{tpl:BlogThemeURL}}/../default/print.css" media="print" />
+
+<script type="text/javascript" src="{{tpl:BlogThemeURL}}/../default/js/jquery.js"></script>
+<script type="text/javascript" src="{{tpl:BlogThemeURL}}/../default/js/jquery.cookie.js"></script>
+
+{{tpl:include src="user_head.html"}}
+{{tpl:SysBehavior behavior="publicHeadContent"}}
+
+<script type="text/javascript">
+//<![CDATA[
+$(function() {
+	if ($('body.dc-post, body.dc-page').length == 0) { return; }
+	if ($('#pr').length > 0) { return; }
+	
+	var link = $('<a href="#">' + $('#comment-form h3:first').text() + '</a>').click(function() {
+		$('#comment-form fieldset').show(200);
+		$('#c_name').focus();
+		$(this).parent().html($(this).text());
+		return false;
+	});
+	$('#comment-form h3:first').empty().append(link);
+	$('#comment-form fieldset').hide();
+});
+//]]>
+</script>
