@@ -4,7 +4,7 @@
 # Original WP Theme from Julien de Luca
 # (http://www.jide.fr/francais/)
 #
-# Copyright (c) 2008-2015
+# Copyright (c) 2008-2016
 # Bruno Hondelatte dsls@morefnu.org
 # Pierre Van Glabeke contact@brol.info
 # 
@@ -218,3 +218,15 @@ html>body .menu_end {
 #menu .menu_container li.last_menu {
 	float:right;
 }
+.caret {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px dashed;
+  display: inline-block;
+  height: 0;
+  margin-left: 4px;
+  vertical-align: middle;
+  width: 0;
+}
+
+#menu ul ul li .caret, #sidebar .w-block-menu .caret {display:none;}

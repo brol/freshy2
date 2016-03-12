@@ -4,7 +4,7 @@
 # Original WP Theme from Julien de Luca
 # (http://www.jide.fr/francais/)
 #
-# Copyright (c) 2008-2015
+# Copyright (c) 2008-2016
 # Bruno Hondelatte dsls@morefnu.org
 # Pierre Van Glabeke contact@brol.info
 #
@@ -788,7 +788,6 @@ p.navigation {
 }
 
 /* plugin dayMode */
-
 .calendar td {text-align:center;}
 
 .calendar a:hover {
