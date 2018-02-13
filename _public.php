@@ -4,7 +4,7 @@
 # Original WP Theme from Julien de Luca
 # (http://www.jide.fr/francais/)
 #
-# Copyright (c) 2008-2016
+# Copyright (c) 2008-2018
 # Bruno Hondelatte dsls@morefnu.org
 # Pierre Van Glabeke contact@brol.info
 # 
@@ -12,6 +12,8 @@
 # A copy of this license is available in LICENSE file or at
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 # -- END LICENSE BLOCK ------------------------------------
+if (!defined('DC_RC_PATH')) { return; }
+
 $core->tpl->addValue('Freshy2StyleSheet',array('tplFreshy2Theme','FreshyStyleSheet'));
 $core->tpl->addValue('Freshy2LayoutClass',array('tplFreshy2Theme','FreshyLayoutClass'));
 $core->tpl->addBlock('Freshy2IfHasSidebar',array('tplFreshy2Theme','FreshyIfHasSidebar'));

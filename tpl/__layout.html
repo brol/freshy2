@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="{{tpl:BlogLanguage}}">
+<head>
+	<tpl:Block name="html-head">
+		<meta charset="UTF-8" />
+
+		<tpl:Block name="head-title">
+			<title>{{tpl:BlogName encode_html="1"}}<tpl:PaginationIf start="0"> - {{tpl:lang page}} {{tpl:PaginationCurrent}}</tpl:PaginationIf></title>
+		</tpl:Block>	<!-- head-title -->
+
+		<tpl:Block name="head-meta">
+			<meta name="copyright" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
+			<tpl:Block name="meta-robots">
+				<meta name="ROBOTS" content="{{tpl:BlogMetaRobots}}" />
+			</tpl:Block>	<!-- meta-robots -->
+			<tpl:Block name="meta-entry">
+				<meta name="description" lang="{{tpl:BlogLanguage}}" content="{{tpl:BlogDescription cut_string="180" remove_html="1" encode_html="1"}}<tpl:PaginationIf start="0"> - {{tpl:lang page}} {{tpl:PaginationCurrent}}</tpl:PaginationIf>" />
+				<meta name="author" content="{{tpl:BlogEditor encode_html="1"}}" />
+				<meta name="date" content="{{tpl:BlogUpdateDate iso8601="1"}}" />
+			</tpl:Block>	<!-- meta-entry -->
+		</tpl:Block>	<!-- head-meta -->
+
+		<tpl:Block name="head-linkrel">
+			<link rel="contents" title="{{tpl:lang Archives}}" href="{{tpl:BlogArchiveURL}}" />
+			<tpl:Categories>
+				<link rel="section" href="{{tpl:CategoryURL}}" title="{{tpl:CategoryTitle encode_html="1"}}" />
+			</tpl:Categories>
+
+			<tpl:Entries no_content="1">
+				<tpl:EntriesHeader>
+					<tpl:Pagination>
+						<tpl:PaginationIf end="0">
+							<link rel="prev" title="{{tpl:lang previous entries}}" href="{{tpl:PaginationURL offset="1"}}" />
+						</tpl:PaginationIf>
+
+						<tpl:PaginationIf start="0">
+							<link rel="next" title="{{tpl:lang next entries}}" href="{{tpl:PaginationURL offset="-1"}}" />
+						</tpl:PaginationIf>
+					</tpl:Pagination>
+				</tpl:EntriesHeader>
+
+				<link rel="chapter" href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}" />
+			</tpl:Entries>
+
+			<link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="{{tpl:BlogFeedURL type="atom"}}" />
+			<link rel="EditURI" type="application/rsd+xml" title="RSD" href="{{tpl:BlogRSDURL}}" />
+			<link rel="meta" type="application/xbel+xml" title="Blogroll" href="{{tpl:BlogrollXbelLink}}" />
+		</tpl:Block>	<!-- head-linkrel -->
+
+		{{tpl:include src="_head.html"}}
+	</tpl:Block>	<!-- html-head -->
+</head>
+<tpl:Block name="body-tag">
+	<body class="dc-home">
+</tpl:Block>
+	<tpl:Block name="html-body">
+    <div id="page">
+			<tpl:Block name="body-page">
+				<tpl:Block name="page-top">
+					{{tpl:include src="_top.html"}}
+				</tpl:Block>	<!-- page-top -->
+        <div id="wrapper" class="{{tpl:Freshy2LayoutClass}}">
+					<tpl:Block name="page-wrapper">
+            <div id="main" role="main">
+							<tpl:Block name="wrapper-main">
+                <div id="content">
+								<tpl:Block name="main-breadcrumb">
+									{{tpl:Breadcrumb}}
+								</tpl:Block>
+									<tpl:Block name="main-content">
+                    <tpl:Entries>
+                    <div id="p{{tpl:EntryID}}" class="post {{tpl:EntryIfOdd}} {{tpl:EntryIfFirst}}" lang="{{tpl:EntryLang}}" role="article">
+
+              		  <h2 class="post-title"><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
+
+              	    <!-- # --BEHAVIOR-- publicEntryBeforeContent -->
+              	    {{tpl:SysBehavior behavior="publicEntryBeforeContent"}}
+    
+                		<!-- # Entry with an excerpt -->
+                		<tpl:EntryIf extended="1">
+                		  <div class="entry">{{tpl:EntryExcerpt}}</div>
+                		  <p class="read-it"><a href="{{tpl:EntryURL}}"
+                		  title="{{tpl:lang Continue reading}} {{tpl:EntryTitle encode_html="1"}}">{{tpl:lang Continue
+                		  reading}}</a><span class="readmore-ellipsis">...</span></p>
+                		</tpl:EntryIf>
+
+                		<!-- # Entry without excerpt -->
+                		<tpl:EntryIf extended="0">
+                		  <div class="entry">{{tpl:EntryContent}}</div>
+                		</tpl:EntryIf>
+
+                    <!-- # --BEHAVIOR-- publicEntryAfterContent -->
+                    {{tpl:SysBehavior behavior="publicEntryAfterContent"}}
+
+                      <div class="meta">
+                        <ul>
+                          <!-- # item auteur -->
+                          <li>{{tpl:lang By}} <span class="author">{{tpl:EntryAuthorLink}}</span> | {{tpl:EntryDate}} | {{tpl:EntryTime}}</li>
+
+                	        <!-- # item comm cat tags -->
+                	        <li>
+                          <!-- # comm -->
+                      		<tpl:EntryIf show_comments="1">{{tpl:lang Comments}}<span class="item"><a href="{{tpl:EntryURL}}#comments" class="comment_count">{{tpl:EntryCommentCount}}</a></span></tpl:EntryIf>
+                      		<!-- # cat -->
+                      		<tpl:EntryIf has_category="1">{{tpl:lang Category}}<span class="item"><tpl:EntryCategoriesBreadcrumb><a href="{{tpl:CategoryURL}}">{{tpl:CategoryTitle encode_html="1"}}</a> &rsaquo; </tpl:EntryCategoriesBreadcrumb><a href="{{tpl:EntryCategoryURL}}">{{tpl:EntryCategory encode_html="1"}}</a></span></tpl:EntryIf>
+                      	  <!-- # tag -->
+                          <tpl:EntryTags>
+                		      <tpl:TagsHeader>{{tpl:lang Tags}}<span class="item"></tpl:TagsHeader><a href="{{tpl:TagURL}}">{{tpl:TagID}}</a><tpl:LoopPosition start="1" length="-1">, </tpl:LoopPosition>
+                		      <tpl:TagsFooter></span></tpl:TagsFooter>
+                		      </tpl:EntryTags>
+                          </li>
+                          <!-- # item rss-comm rss-ping attach -->
+                          <tpl:EntryIf operator="or" comments_active="1" pings_active="1" has_attachment="1">
+                          <li>
+                          </tpl:EntryIf>
+                          <tpl:EntryIf comments_active="1">
+                					<img alt="{{tpl:lang This post's comments Atom feed}}" src="{{tpl:BlogThemeURL}}/images/icons/feed-icon-16x16.gif" /><span class="flux"><a href="{{tpl:BlogFeedURL type="atom"}}/comments/{{tpl:EntryID}}" title="{{tpl:lang This post's comments Atom feed}}">{{tpl:lang This post's comments feed}}</a></span>
+                          </tpl:EntryIf>
+                          <tpl:EntryIf pings_active="1">
+                		      <img alt="{{tpl:lang Trackback}}" src="{{tpl:BlogThemeURL}}/images/icons/trackback-icon-16x16.gif" /><span class="flux"><a href="{{tpl:EntryURL}}#pings" rel="trackback" title="{{tpl:lang Trackback}}">{{tpl:EntryPingCount}}</a></span>
+                          </tpl:EntryIf>
+                		    	<tpl:EntryIf has_attachment="1">
+                          <img alt="{{tpl:lang Attachments}}" src="{{tpl:BlogThemeURL}}/images/icons/download-icon-16x16.gif" /><span class="flux"><a href="{{tpl:EntryURL}}#attachments">{{tpl:EntryAttachmentCount}}</a></span>
+                          </tpl:EntryIf>
+                          <tpl:EntryIf operator="or" comments_active="1" pings_active="1" has_attachment="1">
+                          </li>
+                          </tpl:EntryIf>
+                        </ul>
+                      </div>
+
+                    </div> <!-- end #post -->
+
+	                  <tpl:EntriesFooter>
+                		<tpl:Pagination>
+                		  <p class="navigation">
+                		    <tpl:PaginationIf end="0">
+                		      <span class="alignleft">&#171; <a href="{{tpl:PaginationURL offset="+1"}}" class="prev">{{tpl:lang previous entries}}</a></span>
+                		    </tpl:PaginationIf>
+                		    <tpl:PaginationIf start="0">
+                		      <span class="alignright"><a href="{{tpl:PaginationURL offset="-1"}}" class="next">{{tpl:lang next entries}}</a> &#187;</span></tpl:PaginationIf>
+                		  </p>
+                		</tpl:Pagination>
+                	      </tpl:EntriesFooter>
+                	    </tpl:Entries>
+                    </tpl:Block>	<!-- main-content -->
+                  </div> <!-- End #content -->
+                  </tpl:Block>	<!-- wrapper-main -->
+                    <tpl:Block name="wrapper-sidebar">
+                      <tpl:Freshy2IfHasSidebar pos="right">
+                      <div id="sidebar" class="sidebar" role="complementary">
+                        <tpl:Freshy2IfHasSidebarContent pos="right" value="nav">
+                        <div id="blognav">
+                          {{tpl:Widgets type="nav"}}
+                        </div> <!-- End #blognav -->
+                        </tpl:Freshy2IfHasSidebarContent>
+                        <tpl:Freshy2IfHasSidebarContent pos="right" value="extra">
+                        <div id="blogextra">
+                          {{tpl:Widgets type="extra"}}
+                        </div> <!-- End #blognav -->
+                        </tpl:Freshy2IfHasSidebarContent>
+                      </div>
+                      </tpl:Freshy2IfHasSidebar>
+
+                      <tpl:Freshy2IfHasSidebar pos="left">
+                      <div id="sidebar_left" class="sidebar" role="complementary">
+                        <tpl:Freshy2IfHasSidebarContent pos="left" value="nav">
+                        <div id="blognav">
+                          {{tpl:Widgets type="nav"}}
+                        </div> <!-- End #blogextra -->
+                        </tpl:Freshy2IfHasSidebarContent>
+                        <tpl:Freshy2IfHasSidebarContent pos="left" value="extra">
+                        <div id="blogextra">
+                          {{tpl:Widgets type="extra"}}
+                        </div> <!-- End #blogextra -->
+                        </tpl:Freshy2IfHasSidebarContent>
+                      </div>
+                      </tpl:Freshy2IfHasSidebar>
+                    </tpl:Block>	<!-- wrapper-sidebar -->
+						</div> <!-- End #main -->
+
+					</tpl:Block>	<!-- page-wrapper -->
+				</div> <!-- End #wrapper -->
+		<tpl:Block name="page-footer">
+			{{tpl:include src="_footer.html"}}
+		</tpl:Block>	<!-- page-footer -->
+    </div> <!-- End #page -->
+
+	</tpl:Block>	<!-- body-page -->
+</tpl:Block>	<!-- html-body -->
+</body>
+</html>

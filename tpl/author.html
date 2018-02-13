@@ -1,60 +1,47 @@
-<!DOCTYPE html>
-<html lang="{{tpl:BlogLanguage}}">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="ROBOTS" content="{{tpl:BlogMetaRobots robots="NOINDEX"}}" />
+{{tpl:extends parent="__layout.html"}}
 
+<tpl:Block name="head-title">
   <title>{{tpl:AuthorCommonName encode_html="1"}} - {{tpl:BlogName encode_html="1"}}<tpl:PaginationIf start="0"> - {{tpl:lang page}} {{tpl:PaginationCurrent}}</tpl:PaginationIf></title>
+</tpl:Block>
+
+<tpl:Block name="meta-robots">
+  <meta name="ROBOTS" content="{{tpl:BlogMetaRobots robots="NOINDEX"}}" />
+</tpl:Block>
+
+<tpl:Block name="meta-entry">
   <meta name="description" lang="{{tpl:BlogLanguage}}" content="{{tpl:AuthorDesc cut_string="180" encode_html="1"}}<tpl:PaginationIf start="0"> - {{tpl:lang page}} {{tpl:PaginationCurrent}}</tpl:PaginationIf>" />
-  <meta name="copyright" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
-  <meta name="author" content="{{tpl:BlogEditor encode_html="1"}}" />
-  <meta name="date" content="{{tpl:BlogUpdateDate iso8601="1"}}" />
+	<meta name="author" content="{{tpl:BlogEditor encode_html="1"}}" />
+	<meta name="date" content="{{tpl:BlogUpdateDate iso8601="1"}}" />
+</tpl:Block>
 
-  <meta property="dc.title" lang="{{tpl:BlogLanguage}}" content="{{tpl:AuthorCommonName encode_html="1"}} - {{tpl:BlogName encode_html="1"}}<tpl:PaginationIf start="0"> - {{tpl:lang page}} {{tpl:PaginationCurrent}}</tpl:PaginationIf>" />
-  <meta property="dc.description" lang="{{tpl:BlogLanguage}}" content="{{tpl:AuthorDesc cut_string="180" remove_html="1"}}<tpl:PaginationIf start="0"> - {{tpl:lang page}} {{tpl:PaginationCurrent}}</tpl:PaginationIf>" />
-  <meta property="dc.language" content="{{tpl:BlogLanguage}}" />
-  <meta property="dc.publisher" content="{{tpl:BlogEditor encode_html="1"}}" />
-  <meta property="dc.rights" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
-  <meta property="dc.date" content="{{tpl:BlogUpdateDate iso8601="1"}}" />
-  <meta property="dc.type" content="text" />
-  <meta property="dc.format" content="text/html" />
+<tpl:Block name="head-linkrel">
+	<link rel="contents" href="{{tpl:BlogArchiveURL}}" title="{{tpl:lang Archives}}" />
+	<tpl:Entries no_content="1">
+		<tpl:EntriesHeader>
+			<tpl:Pagination>
+				<tpl:PaginationIf end="0">
+					<link rel="prev" title="{{tpl:lang previous entries}}" href="{{tpl:PaginationURL offset="1"}}" />
+				</tpl:PaginationIf>
 
-  <link rel="contents" title="{{tpl:lang Archives}}" href="{{tpl:BlogArchiveURL}}" />
+				<tpl:PaginationIf start="0">
+					<link rel="next" title="{{tpl:lang next entries}}" href="{{tpl:PaginationURL offset="-1"}}" />
+				</tpl:PaginationIf>
+			</tpl:Pagination>
+		</tpl:EntriesHeader>
+
+		<link rel="chapter" href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}" />
+	</tpl:Entries>
+
   <tpl:Categories>
   <link rel="section" href="{{tpl:CategoryURL}}" title="{{tpl:CategoryTitle encode_html="1"}}" />
   </tpl:Categories>
 
-  <tpl:Entries no_content="1">
-    <tpl:EntriesHeader>
-      <tpl:Pagination>
-        <tpl:PaginationIf end="0">
-        <link rel="prev" title="{{tpl:lang previous entries}}" href="{{tpl:PaginationURL offset="1"}}" />
-        </tpl:PaginationIf>
+	<link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="{{tpl:AuthorFeedURL type="atom"}}" />
+</tpl:Block>
 
-        <tpl:PaginationIf start="0">
-        <link rel="next" title="{{tpl:lang next entries}}" href="{{tpl:PaginationURL offset="-1"}}" />
-        </tpl:PaginationIf>
-      </tpl:Pagination>
-    </tpl:EntriesHeader>
+<tpl:Block name="body-tag"><body class="dc-author"></tpl:Block>
 
-    <link rel="chapter" href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}" />
-  </tpl:Entries>
-
-  <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="{{tpl:AuthorFeedURL type="atom"}}" />
-  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="{{tpl:BlogRSDURL}}" />
-  <link rel="meta" type="application/xbel+xml" title="Blogroll" href="{{tpl:BlogrollXbelLink}}" />
-
-  {{tpl:include src="_head.html"}}
-</head>
-
-<body class="dc-author">
-  <div id="body">
-    {{tpl:include src="_top.html"}}
-
-    <div id="page" class="{{tpl:Freshy2LayoutClass}}">
-      <div class="container">
-	<div id="main" role="main">
-	  <div id="content">
+<tpl:Block name="main-content">
 
   <div id="content-info">
     <h2 class="post-title">{{tpl:AuthorCommonName encode_html="1"}}</h2>
@@ -87,7 +74,7 @@
       <div class="post-content">{{tpl:EntryExcerpt}}</div>
       <p class="read-it"><a href="{{tpl:EntryURL}}"
       title="{{tpl:lang Continue reading}} {{tpl:EntryTitle encode_html="1"}}">{{tpl:lang Continue
-      reading}}</a>...</p>
+      reading}}</a><span class="readmore-ellipsis">...</span></p>
     </tpl:EntryIf>
     
     <!-- # Entry without excerpt -->
@@ -146,14 +133,4 @@
       </tpl:Pagination>
     </tpl:EntriesFooter>
   </tpl:Entries>
-	  </div> <!-- End #content -->
-
-	  {{tpl:include src="_sidebar.html"}}
-	</div> <!-- End #main -->
-      </div> <!-- End #container -->
-    </div> <!-- End #page -->
-
-    {{tpl:include src="_footer.html"}}
-  </div> <!-- End #body -->
-</body>
-</html>
+</tpl:Block>

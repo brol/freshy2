@@ -1,53 +1,16 @@
-<!DOCTYPE html>
-<html lang="{{tpl:BlogLanguage}}">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="ROBOTS" content="{{tpl:BlogMetaRobots}}" />
+{{tpl:extends parent="post.html"}}
 
-  <title>{{tpl:EntryTitle encode_html="1"}} - {{tpl:BlogName encode_html="1"}}</title>
-  <meta name="description" lang="{{tpl:EntryLang}}" content="{{tpl:EntryContent full="1" encode_html="1" remove_html="1" cut_string="180"}}" />
-  <meta name="copyright" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
-  <meta name="author" content="{{tpl:EntryAuthorCommonName encode_html="1"}}" />
-  <meta name="date" content="{{tpl:EntryDate iso8601="1"}}" />
+<tpl:Block name="head-linkrel">
+	<link rel="contents" href="{{tpl:BlogArchiveURL}}" title="{{tpl:lang Archives}}" />
+	<tpl:EntryIf pings_active="1"><link rel="pingback" href="{{tpl:BlogXMLRPCURL}}" /></tpl:EntryIf>
+	<link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="{{tpl:BlogFeedURL type="atom"}}" />
+</tpl:Block>
 
-  <meta property="dc.title" content="{{tpl:EntryTitle encode_html="1"}}" />
-  <meta property="dc.description" lang="{{tpl:EntryLang}}" content="{{tpl:EntryContent full="1" encode_html="1" remove_html="1" cut_string="180"}}" />
-  <meta property="dc.creator" content="{{tpl:EntryAuthorCommonName encode_html="1"}}" />
-  <meta property="dc.language" content="{{tpl:EntryLang}}" />
-  <meta property="dc.publisher" content="{{tpl:BlogEditor encode_html="1"}}" />
-  <meta property="dc.rights" content="{{tpl:BlogCopyrightNotice encode_html="1"}}" />
-  <meta property="dc.date" content="{{tpl:EntryDate iso8601="1"}}" />
-  <meta property="dc.type" content="text" />
-  <meta property="dc.format" content="text/html" />
+<tpl:Block name="body-tag"><body class="dc-page"></tpl:Block>
 
-  <link rel="contents" href="{{tpl:BlogArchiveURL}}" title="{{tpl:lang Archives}}" />
-  <tpl:EntryIf pings_active="1"><link rel="pingback" href="{{tpl:BlogXMLRPCURL}}" /></tpl:EntryIf>
-
-  <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="{{tpl:BlogFeedURL type="atom"}}" />
-
-  {{tpl:include src="_head.html"}}
-
-  <script type="text/javascript" src="{{tpl:BlogQmarkURL}}pf=post.js"></script>
-  <script type="text/javascript">
-  //<![CDATA[
-  var post_remember_str = '{{tpl:lang Remember me on this blog}}';
-  //]]>
-  </script>
-</head>
-
-<body class="dc-page">
-  <div id="body">
-{{tpl:EntryPingData}}
-
-{{tpl:include src="_top.html"}}
-
-    <div id="page" class="{{tpl:Freshy2LayoutClass}}">
-      <div class="container">
-	<div id="main" role="main">
-	  <div id="content">
-
-	    <div id="p{{tpl:EntryID}}" class="post" role="article">
-	      <h2 class="post-title">{{tpl:EntryTitle encode_html="1"}}</h2>
+<tpl:Block name="main-content">
+	<div id="p{{tpl:EntryID}}" class="post" role="article">
+	  <h2 class="post-title">{{tpl:EntryTitle encode_html="1"}}</h2>
 
     <!-- # --BEHAVIOR-- publicEntryBeforeContent -->
     {{tpl:SysBehavior behavior="publicEntryBeforeContent"}}
@@ -90,32 +53,36 @@
         </ul>
       </div>
     
-	    </div> <!-- End #post -->
+	</div> <!-- End #post -->
 
-	    <!-- # Attachments -->        
-	    <tpl:Attachments>
-	      <tpl:AttachmentsHeader>
-		<div class="download">
-		  <h3>{{tpl:lang Attachments}}</h3>
-		<ul>
-	      </tpl:AttachmentsHeader>
-	      <li class="{{tpl:AttachmentType}}">
-		<tpl:AttachmentIf is_mp3="1">
-		  {{tpl:include src="_mp3_player.html"}}<span class="download-mp3"> - </span>
-		</tpl:AttachmentIf>
-		<tpl:AttachmentIf is_flv="1">
-		  {{tpl:include src="_flv_player.html"}}
-		</tpl:AttachmentIf>
-		<tpl:AttachmentIf is_flv="0">
-		  <span class="download-mp3"><a href="{{tpl:AttachmentURL}}"
-		  title="{{tpl:AttachmentFileName}} ({{tpl:AttachmentSize}})">{{tpl:AttachmentTitle}}</a></span>
-		</tpl:AttachmentIf>
-	      </li>
-	      <tpl:AttachmentsFooter>
-		  </ul>
-		</div>
-	      </tpl:AttachmentsFooter>
-	    </tpl:Attachments>
+	<!-- # Attachments -->
+	<tpl:Attachments>
+		<tpl:AttachmentsHeader>
+			<div id="attachments" class="download">
+				<h3>{{tpl:lang Attachments}}</h3>
+				<ul>
+		</tpl:AttachmentsHeader>
+					<li class="{{tpl:AttachmentType}}">
+				<tpl:AttachmentIf is_audio="1">
+					{{tpl:include src="_audio_player.html"}}
+				</tpl:AttachmentIf>
+				<tpl:AttachmentIf is_video="1">
+					<tpl:AttachmentIf is_flv="0">
+						{{tpl:include src="_video_player.html"}}
+					{{tpl:else}}
+						{{tpl:include src="_flv_player.html"}}
+					</tpl:AttachmentIf>
+				</tpl:AttachmentIf>
+				<tpl:AttachmentIf is_audio="0" is_video="0">
+					<span class="download-mp3"><a href="{{tpl:AttachmentURL}}"
+						title="{{tpl:AttachmentFileName}} ({{tpl:AttachmentSize}})">{{tpl:AttachmentTitle}}</a></span>
+				</tpl:AttachmentIf>
+					</li>
+		<tpl:AttachmentsFooter>
+				</ul>
+			</div>
+		</tpl:AttachmentsFooter>
+	</tpl:Attachments>
 
 	    <p id="navigation">
 	      <tpl:EntryPrevious><span class="alignleft">&#171; <a href="{{tpl:EntryURL}}"
@@ -175,6 +142,7 @@
 		</tpl:IfCommentPreview>
 
 		<h3>{{tpl:lang Add a comment}}</h3>
+	    <div class="hidecomment-form">
       <fieldset>		
         <!-- # --BEHAVIOR-- publicCommentFormBeforeContent -->
         {{tpl:SysBehavior behavior="publicCommentFormBeforeContent"}}
@@ -213,6 +181,7 @@
 		  <p class="buttons"><input type="submit" class="preview" name="preview" value="{{tpl:lang preview}}" />
         <tpl:IfCommentPreviewOptional><input type="submit" class="submit" value="{{tpl:lang send}}" /></tpl:IfCommentPreviewOptional></p>
 	    </fieldset>
+ 	    </div>
         </form>
 	    </tpl:EntryIf>
 
@@ -252,15 +221,4 @@
 	    <tpl:EntryIf pings_active="1">
 	      <p id="ping-url">{{tpl:lang Trackback URL}}&nbsp;: {{tpl:EntryPingLink}}</p>
 	    </tpl:EntryIf>
-
-	  </div> <!-- End #content -->
-
-	  {{tpl:include src="_sidebar.html"}}
-	</div> <!-- End #main -->
-      </div> <!-- End #container -->
-    </div> <!-- End #page -->
-
-    {{tpl:include src="_footer.html"}}
-  </div> <!-- End #body -->
-</body>
-</html>
+</tpl:Block>

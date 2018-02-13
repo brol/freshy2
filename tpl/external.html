@@ -26,12 +26,12 @@
 
 <body class="dc-page">
   <div id="body">
+    <div id="page">
     {{tpl:include src="_top.html"}}
-
-    <div id="page" class="{{tpl:Freshy2LayoutClass}}">
-      <div class="container">
+        <div id="wrapper" class="{{tpl:Freshy2LayoutClass}}">
 	<div id="main" role="main">
 	  <div id="content">
+			{{tpl:Breadcrumb}}
 
   <div id="p{{tpl:EntryID}}" class="post" role="article">
     <h2 class="post-title">{{tpl:EntryTitle encode_html="1"}}</h2>
@@ -55,13 +55,38 @@
       </div>
   </div> <!-- end #post -->
 	  </div> <!-- End #content -->
+  <tpl:Freshy2IfHasSidebar pos="right">
+  <div id="sidebar" class="sidebar" role="complementary">
+    <tpl:Freshy2IfHasSidebarContent pos="right" value="nav">
+    <div id="blognav">
+      {{tpl:Widgets type="nav"}}
+    </div> <!-- End #blognav -->
+    </tpl:Freshy2IfHasSidebarContent>
+    <tpl:Freshy2IfHasSidebarContent pos="right" value="extra">
+    <div id="blogextra">
+      {{tpl:Widgets type="extra"}}
+    </div> <!-- End #blognav -->
+    </tpl:Freshy2IfHasSidebarContent>
+  </div>
+  </tpl:Freshy2IfHasSidebar>
 
-	  {{tpl:include src="_sidebar.html"}}
+  <tpl:Freshy2IfHasSidebar pos="left">
+  <div id="sidebar_left" class="sidebar" role="complementary">
+    <tpl:Freshy2IfHasSidebarContent pos="left" value="nav">
+    <div id="blognav">
+      {{tpl:Widgets type="nav"}}
+    </div> <!-- End #blogextra -->
+    </tpl:Freshy2IfHasSidebarContent>
+    <tpl:Freshy2IfHasSidebarContent pos="left" value="extra">
+    <div id="blogextra">
+      {{tpl:Widgets type="extra"}}
+    </div> <!-- End #blogextra -->
+    </tpl:Freshy2IfHasSidebarContent>
+  </div>
+  </tpl:Freshy2IfHasSidebar>
 	</div> <!-- End #main -->
-      </div> <!-- End #container -->
+				</div> <!-- End #wrapper -->
+			{{tpl:include src="_footer.html"}}
     </div> <!-- End #page -->
-
-    {{tpl:include src="_footer.html"}}
-  </div> <!-- End #body -->
 </body>
 </html>
