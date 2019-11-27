@@ -25,11 +25,11 @@
 
 <tpl:Block name="html-head">
 	{{tpl:parent}}
-
-	<script type="text/javascript" src="{{tpl:BlogQmarkURL}}pf=post.js"></script>
-	<script type="text/javascript">
-		var post_remember_str = '{{tpl:lang Remember me on this blog}}';
-	</script>
+  <script type="application/json" id="dc_post_remember_str-data">
+    {"post_remember_str": "{{tpl:lang Remember me on this blog}}"}
+  </script>
+  <script type="text/javascript" src="{{tpl:BlogQmarkURL}}pf=util.js"></script>
+  <script type="text/javascript" src="{{tpl:BlogQmarkURL}}pf=post.js"></script>
   <script type="text/javascript">
   $(document).ready(function() {
   if ($('#pr').is(':visible')) {jQuery('.hidecomment-form').show()} else {$(".hidecomment-form").hide()};
@@ -118,16 +118,10 @@
 					{{tpl:include src="_audio_player.html"}}
 				</tpl:AttachmentIf>
 				<tpl:AttachmentIf is_video="1">
-					<tpl:AttachmentIf is_flv="0">
-						{{tpl:include src="_video_player.html"}}
-					{{tpl:else}}
-						{{tpl:include src="_flv_player.html"}}
-					</tpl:AttachmentIf>
-
-				</tpl:AttachmentIf>
-		 <tpl:AttachmentIf is_audio="0" is_video="0">
-			<span class="download-mp3"><a href="{{tpl:AttachmentURL}}"
-		title="{{tpl:AttachmentFileName}} ({{tpl:AttachmentSize}})">{{tpl:AttachmentTitle}}</a></span>
+					{{tpl:include src="_video_player.html"}}
+     		</tpl:AttachmentIf>
+		    <tpl:AttachmentIf is_audio="0" is_video="0">
+          <span class="download-mp3"><a href="{{tpl:AttachmentURL}}" title="{{tpl:AttachmentFileName}} ({{tpl:AttachmentSize}})">{{tpl:AttachmentTitle}}</a></span>
 				</tpl:AttachmentIf>
 			</li>
 		<tpl:AttachmentsFooter>
