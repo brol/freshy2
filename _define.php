@@ -17,7 +17,6 @@ if (!defined('DC_RC_PATH')) {
     return;
 }
 
-/* date 12-02-2018 */
 $this->registerModule(
     'Freshy v2',
     'Freshy v2 customizable theme',

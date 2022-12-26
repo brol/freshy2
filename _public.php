@@ -127,39 +127,5 @@ class tplFreshy2Theme
         }
     }
 }
-dcCore::app()->tpl->addValue('gravatar', ['gravatar', 'tplGravatar']);
 
-class gravatar
-{
-    public const
-      URLBASE     = 'http://www.gravatar.com/avatar.php?gravatar_id=%s&amp;default=%s&amp;size=%d',
-    HTMLTAG       = '<img src="%s" class="%s" alt="%s" />',
-    DEFAULT_SIZE  = '40',
-    DEFAULT_CLASS = 'gravatar_img',
-    DEFAULT_ALT   = 'Gravatar de %s';
-
-    public static function tplGravatar($attr)
-    {
-        $md5mail = '\'.md5(strtolower($_ctx->comments->getEmail(false))).\'';
-        $size    = array_key_exists('size', $attr) ? $attr['size'] : self::DEFAULT_SIZE;
-        $class   = array_key_exists('class', $attr) ? $attr['class'] : self::DEFAULT_CLASS;
-        $alttxt  = array_key_exists('alt', $attr) ? $attr['alt'] : self::DEFAULT_ALT;
-        $altimg  = array_key_exists('altimg', $attr) ? $attr['altimg'] : '';
-        $gurl    = sprintf(
-            self::URLBASE,
-            $md5mail,
-            urlencode($altimg),
-            $size
-        );
-        $gtag = sprintf(
-            self::HTMLTAG,
-            $gurl,
-            $class,
-            preg_match('/%s/i', $alttxt) ?
-                           sprintf($alttxt, '\'.$_ctx->comments->comment_author.\'') : $alttxt
-        );
-
-        return '<?php echo \'' . $gtag . '\'; ?>';
-    }
-}
 tplFreshy2Theme::initSettings();

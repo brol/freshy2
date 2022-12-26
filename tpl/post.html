@@ -150,7 +150,8 @@
 	      <div class="commentlist">
 		<tpl:Comments>
 		  <div class="comment {{tpl:CommentIfMe return="comment_author"}} {{tpl:CommentIfOdd}} {{tpl:CommentIfFirst}}" id="c{{tpl:CommentID}}">
-			{{tpl:gravatar class="avatar" size="40"  alt="Gravatar de %s"}} <h4>{{tpl:CommentContent cut_string="50" remove_html="1"}}</h4>
+			<img src="http://www.gravatar.com/avatar/{{tpl:CommentAuthorMailMD5}}?s=40" class="avatar" alt="{{tpl:CommentAuthor}}" />
+			<h4>{{tpl:CommentContent cut_string="50" remove_html="1"}}</h4>
 			<small><span class="author">{{tpl:CommentAuthorLink}}</span> | {{tpl:CommentDate}} | {{tpl:CommentTime}}</small>
 			<div class="comment_content">
       <!-- # --BEHAVIOR-- publicCommentBeforeContent -->
