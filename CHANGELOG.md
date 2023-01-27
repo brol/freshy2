@@ -1,4 +1,4 @@
-v2.1 - 25/12/2022 - Pierre Van Glabeke
+v2.1-dev - 25/12/2022 - Pierre Van Glabeke
 * modifs css, html, images
 
 v2.0.1 - 25/12/2022 - JC Denis

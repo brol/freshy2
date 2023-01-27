@@ -21,7 +21,7 @@ $this->registerModule(
     'Freshy v2',
     'Freshy v2 customizable theme',
     'Bruno Hondelatte, Pierre Van Glabeke, Julien de Luca (original WP theme)',
-    '2.1',
+    '2.1-dev',
     [
         'requires' => [['core', '2.24']],
         'type'     => 'theme',
